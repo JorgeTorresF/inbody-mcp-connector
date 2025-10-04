@@ -1,0 +1,86 @@
+name: inbody-mcp
+version: 0.1.0
+description: MCP tools to fetch body composition measurements from InBody Lookin'Body Web API.
+
+capabilities:
+  tools:
+    listChanged: false
+
+tools:
+  - name: getInBodyDataByUserToken
+    title: Get InBody data by UserToken (phone)
+    description: Fetch all available measurements for a user identified by phone number (UserToken).
+    inputSchema:
+      type: object
+      properties:
+        user_token:
+          type: string
+          description: Phone number registered as the user's token.
+        start_date:
+          type: string
+          description: Optional start date (YYYYMMDD).
+        end_date:
+          type: string
+          description: Optional end date (YYYYMMDD).
+      required: ["user_token"]
+    outputSchema:
+      type: array
+      items:
+        type: object
+        properties:
+          datetime:
+            type: string
+          weight:
+            type: number
+          body_fat_percentage:
+            type: number
+          skeletal_muscle_mass:
+            type: number
+          bmi:
+            type: number
+          visceral_fat_level:
+            type: number
+          basal_metabolic_rate:
+            type: number
+          inbody_score:
+            type: number
+
+  - name: getInBodyDataByUserID
+    title: Get InBody data by UserID (local)
+    description: Fetch all available measurements for a user identified by local UserID.
+    inputSchema:
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: Local user identifier (within current location).
+        start_date:
+          type: string
+          description: Optional start date (YYYYMMDD).
+        end_date:
+          type: string
+          description: Optional end date (YYYYMMDD).
+      required: ["user_id"]
+    outputSchema:
+      type: array
+      items:
+        type: object
+        properties:
+          datetime:
+            type: string
+          weight:
+            type: number
+          body_fat_mass:
+            type: number
+          soft_lean_mass:
+            type: number
+          body_fat_percentage:
+            type: number
+          skeletal_muscle_mass:
+            type: number
+          bmi:
+            type: number
+          obesity_degree:
+            type: number
+          visceral_fat_area:
+            type: number

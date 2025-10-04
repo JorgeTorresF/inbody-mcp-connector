@@ -1,0 +1,19 @@
+### Test connection
+POST https://<region>.lookinbody.com/user/test
+Account: {{INBODY_ACCOUNT}}
+API-KEY: {{INBODY_API_KEY}}
+Content-Type: application/json
+
+{}
+
+### Query by UserToken
+POST https://<region>.lookinbody.com/Function
+Account: {{INBODY_ACCOUNT}}
+API-KEY: {{INBODY_API_KEY}}
+Content-Type: application/json
+
+{
+  "UserToken": "5551234567",
+  "StartDate": "20240101",
+  "EndDate": "20241231"
+}
